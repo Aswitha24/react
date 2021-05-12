@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './components/Dashboard';
+import HeaderComponent from './components/layout/HeaderComponent';
+import FooterComponent from './components/layout/FooterComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import AddUser from './components/Registration/AddUser';
+import Login from './components/Registration/Login';
+import { Provider } from 'react-redux';
+import store from './store';
+import HomeComponent from './components/Home';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+
+    <Provider store={store}>
+      
+      <Router>
+        
+      <HeaderComponent/>
+      <Route exact path="/Home" component={HomeComponent}/>
+      <Route exact path="/dashboard" component={Dashboard}/>
+      <Route exact path="/addUser" component={AddUser}/>
+      <Route exact path="/login" component={Login}/>
+
+  
+      
+        
+        {/* <Route path="/login" component={Login}></Route> */}
+  
+      <FooterComponent/>
+      </Router>
+    </Provider>
+  
   );
 }
 
